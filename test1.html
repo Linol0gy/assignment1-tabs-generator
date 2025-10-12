@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Tabs</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5;">
+    <div style="max-width: 800px; margin: 0 auto; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <!-- Tab Headers -->
+        <div style="display: flex; border-bottom: 2px solid #e0e0e0; background-color: #fafafa; border-radius: 8px 8px 0 0; overflow-x: auto;">
+            <button 
+                onclick="showTab('1')" 
+                id="tab-btn-1"
+                style="padding: 12px 24px; background-color: white; border: none; border-bottom: 2px solid #2196F3; cursor: pointer; font-weight: bold; color: #2196F3; transition: all 0.3s ease; flex-shrink: 0;"
+                onmouseover="this.style.backgroundColor='#f0f0f0'" 
+                onmouseout="if(this.id !== 'tab-btn-' + currentTab) this.style.backgroundColor='transparent'"
+            >Home</button>
+            <button 
+                onclick="showTab('1755841896000')" 
+                id="tab-btn-1755841896000"
+                style="padding: 12px 24px; background-color: transparent; border: none; border-bottom: none; cursor: pointer; font-weight: normal; color: #666; transition: all 0.3s ease; flex-shrink: 0;"
+                onmouseover="this.style.backgroundColor='#f0f0f0'" 
+                onmouseout="if(this.id !== 'tab-btn-' + currentTab) this.style.backgroundColor='transparent'"
+            >About</button>
+            <button 
+                onclick="showTab('1755841896796')" 
+                id="tab-btn-1755841896796"
+                style="padding: 12px 24px; background-color: transparent; border: none; border-bottom: none; cursor: pointer; font-weight: normal; color: #666; transition: all 0.3s ease; flex-shrink: 0;"
+                onmouseover="this.style.backgroundColor='#f0f0f0'" 
+                onmouseout="if(this.id !== 'tab-btn-' + currentTab) this.style.backgroundColor='transparent'"
+            >Contact</button>
+        </div>
+        
+        <!-- Tab Contents -->
+        <div 
+            id="tab-content-1" 
+            style="padding: 20px; display: block; min-height: 200px; white-space: pre-wrap;"
+        >Welcome to my HTML5 Tab Generator!
+This is Assignment 1 for CSE3CWA.
+</div>
+        <div 
+            id="tab-content-1755841896000" 
+            style="padding: 20px; display: none; min-height: 200px; white-space: pre-wrap;"
+        ></div>
+        <div 
+            id="tab-content-1755841896796" 
+            style="padding: 20px; display: none; min-height: 200px; white-space: pre-wrap;"
+        ></div>
+    </div>
+
+    <script>
+        var currentTab = '1';
+        
+        function showTab(tabId) {
+            // Hide all tabs
+            document.getElementById('tab-content-1').style.display = 'none';
+            document.getElementById('tab-btn-1').style.backgroundColor = 'transparent';
+            document.getElementById('tab-btn-1').style.borderBottom = 'none';
+            document.getElementById('tab-btn-1').style.fontWeight = 'normal';
+            document.getElementById('tab-btn-1').style.color = '#666';
+            document.getElementById('tab-content-1755841896000').style.display = 'none';
+            document.getElementById('tab-btn-1755841896000').style.backgroundColor = 'transparent';
+            document.getElementById('tab-btn-1755841896000').style.borderBottom = 'none';
+            document.getElementById('tab-btn-1755841896000').style.fontWeight = 'normal';
+            document.getElementById('tab-btn-1755841896000').style.color = '#666';
+            document.getElementById('tab-content-1755841896796').style.display = 'none';
+            document.getElementById('tab-btn-1755841896796').style.backgroundColor = 'transparent';
+            document.getElementById('tab-btn-1755841896796').style.borderBottom = 'none';
+            document.getElementById('tab-btn-1755841896796').style.fontWeight = 'normal';
+            document.getElementById('tab-btn-1755841896796').style.color = '#666';
+            
+            // Show selected tab
+            document.getElementById('tab-content-' + tabId).style.display = 'block';
+            document.getElementById('tab-btn-' + tabId).style.backgroundColor = 'white';
+            document.getElementById('tab-btn-' + tabId).style.borderBottom = '2px solid #2196F3';
+            document.getElementById('tab-btn-' + tabId).style.fontWeight = 'bold';
+            document.getElementById('tab-btn-' + tabId).style.color = '#2196F3';
+            
+            currentTab = tabId;
+        }
+    </script>
+</body>
+</html>
