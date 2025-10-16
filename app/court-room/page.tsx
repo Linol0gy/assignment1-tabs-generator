@@ -919,9 +919,16 @@ export default function CourtRoomPage() {
               className="space-y-4 rounded-2xl bg-black/40 p-6 shadow-lg backdrop-blur"
               aria-label="Incoming communications"
             >
-              <header className="flex items-center justify-between">
-                <h3 className="text-xl font-semibold text-white">Messages</h3>
-                <span className="text-xs uppercase tracking-wide text-gray-300">Live updates</span>
+              <header className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <img src="/icons/messages.svg" alt="" className="h-8 w-8" aria-hidden="true" />
+                  <div>
+                    <h3 className="text-xl font-semibold text-white">Messages</h3>
+                    <span className="text-xs uppercase tracking-wide text-gray-300">
+                      Live updates
+                    </span>
+                  </div>
+                </div>
               </header>
               <div
                 className="max-h-[520px] space-y-3 overflow-y-auto pr-1"
@@ -985,24 +992,32 @@ export default function CourtRoomPage() {
             aria-label="Stage progress"
             className="space-y-4 rounded-2xl bg-black/40 p-6 shadow-lg backdrop-blur"
           >
-            <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-              <div>
-                <h3 className="text-xl font-semibold text-white">Persist Session</h3>
-                <p className="text-sm text-gray-300">
-                  Save a snapshot of the current Court Room session to the database.
-                </p>
-              </div>
-              <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-4">
-                <button
-                  type="button"
-                  onClick={handleSaveOutput}
-                  className="rounded-lg bg-emerald-500 px-4 py-2 font-semibold text-emerald-50 transition hover:bg-emerald-600 focus-visible:ring-2 focus-visible:ring-emerald-300 disabled:cursor-not-allowed disabled:opacity-60"
-                  disabled={saveStatus === "saving"}
-                >
-                  {saveStatus === "saving" ? "Saving..." : "Save Session Snapshot"}
-                </button>
-                <div className="text-sm" aria-live="polite">
-                  {saveStatus === "success" ? (
+              <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <h3 className="text-xl font-semibold text-white">Persist Session</h3>
+                  <p className="text-sm text-gray-300">
+                    Save a snapshot of the current Court Room session to the database.
+                  </p>
+                </div>
+                <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-4">
+                  <button
+                    type="button"
+                    onClick={handleSaveOutput}
+                    className="rounded-lg bg-emerald-500 px-4 py-2 font-semibold text-emerald-50 transition hover:bg-emerald-600 focus-visible:ring-2 focus-visible:ring-emerald-300 disabled:cursor-not-allowed disabled:opacity-60"
+                    disabled={saveStatus === "saving"}
+                  >
+                    <span className="flex items-center gap-2">
+                      <img
+                        src="/icons/save.svg"
+                        alt=""
+                        className="h-5 w-5"
+                        aria-hidden="true"
+                      />
+                      {saveStatus === "saving" ? "Saving..." : "Save Session Snapshot"}
+                    </span>
+                  </button>
+                  <div className="text-sm" aria-live="polite">
+                    {saveStatus === "success" ? (
                     <span className="text-emerald-200">Snapshot saved.</span>
                   ) : null}
                   {saveStatus === "error" ? (
