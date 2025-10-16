@@ -151,10 +151,24 @@ Next.js automatically executes `instrumentation.ts` on the server runtime. The c
 
 Re-run `npm test` to see instrumentation logs produced by the API test suite.
 
+- **Performance evidence**: Lighthouse report is available at `docs/lighthouse-report.png`. Re-run via Chrome DevTools Lighthouse panel or CLI to regenerate if required.
+
 ## Feedback & Cloud Deployment Checklist
 
 - **Feedback collection**: Use `docs/feedback-plan.md` (see below) as a template to brief family, friends, and industry reviewers. Gather written notes and ensure each participant submits the ethical survey at <https://redcap.latrobe.edu.au/redcap/surveys/?s=PPEKFTMPXF4KKEFY>.
-- **CI/testing**: `npm test` now covers the new Prisma API, Court Room behaviours, and HTML generator scenarios.
+- **CI/testing**:
+  - `npm test` covers Prisma CRUD, HTML generation, and Court Room logic.
+  - Playwright end-to-end tests cover the Court Room workflow and Tabs generator output. Run them against a live dev server:
+    ```bash
+    npm run dev -- --hostname 0.0.0.0
+    npx playwright install
+    PLAYWRIGHT_BASE_URL=http://localhost:3000 npm run test:e2e
+    ```
+    The dev-server console will display instrumentation logs (`[instrumentation] fetch ...`) during the Playwright session.
+  - Generate Lighthouse/JMeter evidence before submission. Example Lighthouse CLI usage:
+    ```bash
+    npx lighthouse http://localhost:3000 --view
+    ```
 - **Cloud deployment**: The Docker image can be pushed to any registry (e.g., GHCR/ECR). Deploy via services such as Render, Azure Web Apps, or AWS ECS. Ensure environment variables (`DATABASE_URL`, `OUTPUT_SERVICE_BASE_URL`) are set in the hosting platform.
 
 ## Serverless Lambda Scaffold
