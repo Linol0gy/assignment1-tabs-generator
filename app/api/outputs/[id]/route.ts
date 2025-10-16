@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-type RouteParams = { params: { id: string } };
-
-export async function GET(_: Request, { params }: RouteParams) {
+export async function GET(_: Request, { params }: any) {
   const output = await prisma.generatedOutput.findUnique({
     where: { id: params.id },
   });
@@ -15,7 +13,7 @@ export async function GET(_: Request, { params }: RouteParams) {
   return NextResponse.json(output);
 }
 
-export async function PUT(request: Request, { params }: RouteParams) {
+export async function PUT(request: Request, { params }: any) {
   const body = (await request.json().catch(() => null)) as
     | { scenario?: string; html?: string }
     | null;
@@ -42,7 +40,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function DELETE(_: Request, { params }: RouteParams) {
+export async function DELETE(_: Request, { params }: any) {
   try {
     await prisma.generatedOutput.delete({
       where: { id: params.id },
